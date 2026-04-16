@@ -12,7 +12,7 @@ if (isset($_POST['reviewtext'])) {
             move_uploaded_file($_FILES['reviewimage']['tmp_name'], 'images/' . $imageName);
         }
 
-        // BẮT BUỘC dùng userid của người đang login (không cho chọn user khác)
+        // You MUST use the username of the currently logged-in user (you cannot select a different user)
         $userid = $_SESSION['user_id'] ?? 0;
 
         insertReview($pdo, $_POST['reviewtext'], $imageName, $userid, $_POST['filmid']);
@@ -24,7 +24,7 @@ if (isset($_POST['reviewtext'])) {
         $output = 'Unable to add review: ' . $e->getMessage();
     }
 } else {
-    $users = allUsers($pdo);   // vẫn giữ để hiển thị dropdown (nhưng sẽ không dùng)
+    $users = allUsers($pdo);   // Keep this to display the dropdown (but won't use it)
     $films = allFilms($pdo);
 
     $title = 'Add Review';
