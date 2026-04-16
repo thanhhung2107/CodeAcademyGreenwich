@@ -1,25 +1,21 @@
 <?php
-if (isset($_POST['name'])) {
+include 'includes/DatabaseConnection.php';
+include 'includes/DatabaseFunctions.php';
+
+if (isset($_POST['name']) && isset($_POST['email'])) {
     try {
-        include 'includes/DatabaseConnection.php';
-
-        $sql = 'INSERT INTO user SET name = :name, email = :email';
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':name', $_POST['name']);
-        $stmt->bindValue(':email', $_POST['email']);
-        $stmt->execute();
-
+        insertUser($pdo, $_POST['name'], $_POST['email']);
         header('Location: users.php');
         exit;
     } catch (PDOException $e) {
         $title = 'Error';
-        $output = 'Database error: ' . $e->getMessage();
+        $output = 'Unable to add user: ' . $e->getMessage();
     }
 } else {
-    $title = "Add a new user";
+    $title = 'Add User';
     ob_start();
-    include 'templates/adduser.html.php';
+    include 'templates/addusers.html.php';
     $output = ob_get_clean();
 }
-
 include 'templates/layout.html.php';
+?>
