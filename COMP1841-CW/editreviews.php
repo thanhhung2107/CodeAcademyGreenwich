@@ -8,17 +8,17 @@ $isLoggedIn = isset($_SESSION['authorized']) && $_SESSION['authorized'] === true
 $isAdmin    = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 $userId     = $_SESSION['user_id'] ?? 0;
 
-// Nếu chưa login → đẩy về login
+// If not logged in → push to login
 if (!$isLoggedIn) {
     header("Location: Login.html");
     exit;
 }
 
 if (isset($_POST['reviewtext'])) {
-    // ==================== PHẦN UPDATE ====================
+    // ==================== The UPDATE ====================
     $id = (int)$_POST['id'];
 
-    // Lấy review để kiểm tra quyền
+    // Get reviews to check permissions
     $review = getReview($pdo, $id);
 
     if (!$review) {
@@ -47,13 +47,13 @@ if (isset($_POST['reviewtext'])) {
     }
 } 
 else {
-    // ==================== PHẦN HIỂN THỊ FORM ====================
+    // ==================== FORM DISPLAY SECTION ====================
     $id = (int)($_GET['id'] ?? $_POST['id'] ?? 0);
     $review = getReview($pdo, $id);
 
     if (!$review) {
         $title = 'Error';
-        $output = 'Review không tồn tại!';
+        $output = 'Review Not Exist';
     } 
     elseif (!$isAdmin && $review['userid'] != $userId) {
         $title = 'Error';
