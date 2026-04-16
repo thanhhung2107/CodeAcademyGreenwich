@@ -26,7 +26,7 @@
                     </form>
                     <form action="deletefilms.php" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $film['id'] ?>">
-                        <input type="submit" value="Delete" onclick="return confirm('Bạn chắc chắn muốn xóa phim này?');">
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this movie?');">
                     </form>
                 </td>
             <?php endif; ?>
