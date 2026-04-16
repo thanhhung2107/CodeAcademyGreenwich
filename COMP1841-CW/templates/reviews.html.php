@@ -36,7 +36,7 @@
                     </form>
                     <form action="deletereviews.php" method="post" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $review['id'] ?>">
-                        <input type="submit" value="Delete" onclick="return confirm('');">
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this user?');">
                     </form>
                 <?php endif; ?>
             </td>
