@@ -21,7 +21,7 @@
             <td>
                 <form action="deletecontact.php" method="post" style="display:inline;">
                     <input type="hidden" name="id" value="<?= $contact['id'] ?>">
-                    <input type="submit" value="Delete" onclick="return confirm('Bạn chắc chắn muốn xóa tin nhắn này không?');">
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this message?');">
                 </form>
             </td>
         </tr>
