@@ -6,7 +6,7 @@
             <th>ID</th>
             <th>Film Name</th>
             <th>Date Added</th>
-            <?php if ($isAdmin): ?>   <!-- Chỉ Admin mới thấy cột Actions -->
+            <?php if ($isAdmin): ?>   <!-- Only Admins can see the Actions column -->
                 <th>Actions</th>
             <?php endif; ?>
         </tr>
